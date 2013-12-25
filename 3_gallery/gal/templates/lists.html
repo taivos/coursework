@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Галлерея</title>
+		<meta name="viewport" content="width=1024" />
+
+		<link rel="stylesheet" href="/static/styles.css" media="all" />
+		<link rel="stylesheet" href="/static/colorbox.css" media="all" />
+
+		<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js?ver=1.8.2'></script>
+		<script src='/static/colorbox.js'></script>
+		<script>
+			$(document).ready(function(){ jQuery('#lists .item').colorbox({ rel : 'gallery', maxWidth : 500, maxHeight : 500 }); });
+		</script>
+	</head>
+	<body>
+		<div class="content">
+			<div class="align-center">
+				<a href="/">Добавить изображение</a>
+			</div>
+			<div id="lists">
+				{% for item in lists %}
+					<a href="/{{ item.original.url }}" title="{{ item.title }}" class="item">
+						<img src="/{{ item.original.url }}" alt="{{ item.title }}" />
+					</a>
+				{% endfor %}
+			</div>
+		</div>
+	</body>
+</html>
